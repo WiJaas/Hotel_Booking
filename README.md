@@ -39,8 +39,7 @@ Browse available rooms.
 Make, modify, or cancel reservations.
 
 Demo:
-https://github.com/user-attachments/assets/278cafc6-8eaf-41b0-a55d-871f4ecf3255
-
+https://github.com/user-attachments/assets/c28dda89-0c40-4064-93eb-b3ad2a08d0bc
 
 Admin:
 
@@ -49,8 +48,7 @@ Manage room inventory.
 View and handle reservations.
 
 Demo:
-https://github.com/user-attachments/assets/b7472bd2-c01e-4436-b121-74cc5d5a3e76
-
+https://github.com/user-attachments/assets/72393ba6-46b4-4a49-8568-636e9a38f65d
 
 📊 UML Design
 
