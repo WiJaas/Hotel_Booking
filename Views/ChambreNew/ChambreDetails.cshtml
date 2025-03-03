@@ -1,0 +1,42 @@
+﻿@model Hotel_Booking.Models.ChambreNew
+
+@{
+    ViewData["Title"] = "Room Details";
+}
+
+<!-- Link to the CSS file -->
+<link rel="stylesheet" href="~/css/room_details.css" />
+
+<div class="container room-details-container">
+    <h1 class="room-title">@Model.TypeChambre</h1>
+    <div class="room-details-card">
+        <div class="room-image-container">
+            @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+            {
+                <img src="@Model.PhotoUrl" alt="@Model.TypeChambre" class="room-image" />
+            }
+            else
+            {
+                <p>No image available</p>
+            }
+        </div>
+        <div class="room-info">
+            <p class="room-description"><strong>Description:</strong> @Model.DescriptionChambre</p>
+            <p><strong>Capacity:</strong> @Model.Capacite</p>
+            <p><strong>Price Per Night:</strong> $@Model.TarifParNuit</p>
+            <p><strong>Status:</strong> @Model.StatutChambre</p>
+        </div>
+    </div>
+    <div class="action-buttons">
+        <ul>
+            <li>
+                <a asp-controller="ReservationNew" asp-action="Create" asp-route-idChambre="@Model.IdChambre" class="btn btn-primary">Reserve</a>
+
+                <!-- Reserve button sends the room ID -->
+            </li>
+            <li>
+                <a asp-action="AvailableRooms" class="btn btn-secondary back-button">Back to Listings</a>
+            </li>
+        </ul>
+    </div>
+</div>

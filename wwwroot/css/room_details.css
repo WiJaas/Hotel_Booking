@@ -1,0 +1,81 @@
+﻿/* Container for the room details */
+.room-details-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title of the room */
+.room-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Card for room details */
+.room-details-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Container for the room image */
+.room-image-container {
+    flex: 1 1 300px;
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+/* Room image */
+.room-image {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Information about the room */
+.room-info {
+    flex: 2 1 300px;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+/* Description of the room */
+.room-description {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Action buttons */
+.action-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    /* List of action buttons */
+    .action-buttons ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    /* Individual action button */
+    .action-buttons li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+/* Back button */
+.back-button {
+    background-color: #6c757d;
+    color: #fff;
+}

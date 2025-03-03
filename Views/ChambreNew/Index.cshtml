@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Hotel_Booking.Models.ChambreNew>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h2>Room Management</h2>
+<a asp-action="Create" class="btn btn-primary">Add New Room</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Type</th>
+            <th>Capacity</th>
+            <th>Rate</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <!-- Display the image if it exists -->
+                <td>
+                    @if (!string.IsNullOrEmpty(room.PhotoUrl))
+                    {
+                        <img src="@room.PhotoUrl" alt="@room.TypeChambre" style="width: 100px; height: 75px; object-fit: cover;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>@room.TypeChambre</td>
+                <td>@room.Capacite</td>
+                <td>@room.TarifParNuit</td>
+                <td>@room.StatutChambre</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@room.IdChambre" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@room.IdChambre" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

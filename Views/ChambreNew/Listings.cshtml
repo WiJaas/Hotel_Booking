@@ -1,0 +1,57 @@
+﻿
+@model List<Hotel_Booking.Models.ChambreNew>
+@{
+    ViewData["Title"] = "Accommodation Listings";
+}
+ <link rel="stylesheet" href="~/css/site.css" />
+    <header>
+        <h1>Séjournez dans nos hébergements uniques les mieux notés</h1>
+    </header>
+
+    <section class="listings-container">
+    @if (Model != null && Model.Any())
+    {
+
+                <div class="listings-row">
+            @foreach (var chambre in Model.Take(3))
+            {
+                <a asp-action="Details" asp-route-id="@chambre.IdChambre" class="listing-card-link">
+                                <div class="listing-card">
+                                    <div class="img-container">
+                                        <img src="@chambre.PhotoUrl" alt="@chambre.TypeChambre" />
+                                        <div class="heart-icon">♡</div>
+                                    </div>
+                                    <h3>@chambre.TypeChambre</h3>
+                                     <div class="rating">
+                                        <span>@chambre.TarifParNuit</span>
+                                        <span>Statut: @chambre.StatutChambre</span>
+                                    </div>
+                                </div>
+                            </a>
+            }
+                </div>
+                <div class="listings-row">
+            @foreach (var chambre in Model.Skip(3).Take(3))
+            {
+                <a asp-action="Details" asp-route-id="@chambre.IdChambre" class="listing-card-link">
+                                 <div class="listing-card">
+                                    <div class="img-container">
+                                        <img src="@chambre.PhotoUrl" alt="@chambre.TypeChambre" />
+                                        <div class="heart-icon">♡</div>
+                                    </div>
+                                    <h3>@chambre.TypeChambre</h3>
+                                     <div class="rating">
+                                        <span>@chambre.TarifParNuit</span>
+                                        <span>Statut: @chambre.StatutChambre</span>
+                                    </div>
+                                </div>
+                            </a>
+            }
+                </div>
+    }
+    else
+    {
+                <p>No rooms available.</p>
+    }
+        
+    </section>

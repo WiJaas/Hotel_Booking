@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Hotel_Booking.Models.ReservationNew>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateDebut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateFin)
+            </th>
+
+      
+            <th>
+              Type of Room
+            </th>
+
+            <th>
+                Tarif Par Nuit
+
+            </th>
+            <th>
+                Room Image
+            </th>
+         
+        
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDebut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFin)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.IdChambreNavigation.TypeChambre)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdChambreNavigation.TarifParNuit)
+                </td>
+                <td>
+                    <!-- Display room image -->
+                    <img src="@(!string.IsNullOrEmpty(item.IdChambreNavigation.PhotoUrl) ? item.IdChambreNavigation.PhotoUrl : "/images/default-room.jpg")" alt="Room Image" width="100" height="100" />
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdReservation">Edit</a> |
+           
+                <a asp-action="Delete" asp-route-id="@item.IdReservation">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

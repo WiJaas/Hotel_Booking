@@ -1,0 +1,97 @@
+﻿@model Hotel_Booking.Models.ReservationNew
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Layout"; // Ensure this is set to your main layout if you have one
+}
+
+<!-- Link to the CSS file -->
+<link rel="stylesheet" href="~/css/Reser_Creation.css" />
+
+<div class="reservation-container mt-5">
+    <h1 class="reservation-title mb-4">Create Reservation</h1>
+
+    <h4>Reservation Details</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Room Photo -->
+            <div class="form-group">
+                <label class="control-label">Room Photo</label>
+                <div>
+                    @if (ViewData["RoomDetails"] != null)
+                    {
+                        var roomDetails = ViewData["RoomDetails"] as dynamic;
+                        if (roomDetails != null && !string.IsNullOrEmpty(roomDetails.PhotoUrl))
+                        {
+                            <img src="@Url.Content(roomDetails.PhotoUrl)" alt="Room Photo" class="img-thumbnail" />
+                        }
+                        else
+                        {
+                            <p>No photo available.</p>
+                        }
+                    }
+                    else
+                    {
+                        <p>No room details available.</p>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 form-container">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <!-- Room Description -->
+                <div class="form-group">
+                    <label class="control-label">Room Description</label>
+                    <div>
+                        <p>@((ViewData["RoomDetails"] as dynamic)?.DescriptionChambre)</p>
+                    </div>
+                </div>
+
+                <!-- Room Information -->
+                <div class="form-group">
+                    <label asp-for="IdChambre" class="control-label">Selected Room</label>
+                    <input asp-for="IdChambre" class="form-control" readonly />
+                    <span asp-validation-for="IdChambre" class="text-danger"></span>
+                </div>
+
+                <!-- Start Date -->
+                <div class="form-group">
+                    <label asp-for="DateDebut" class="control-label">Start Date</label>
+                    <input asp-for="DateDebut" class="form-control" type="date" required />
+                    <span asp-validation-for="DateDebut" class="text-danger"></span>
+                </div>
+
+                <!-- End Date -->
+                <div class="form-group">
+                    <label asp-for="DateFin" class="control-label">End Date</label>
+                    <input asp-for="DateFin" class="form-control" type="date" required />
+                    <span asp-validation-for="DateFin" class="text-danger"></span>
+                </div>
+
+                <!-- Reservation Type -->
+                <div class="form-group">
+                    <label asp-for="TypeReservation" class="control-label">Reservation Type</label>
+                    <select asp-for="TypeReservation" class="form-control" asp-items="@(ViewData["TypeReservationList"] as List<SelectListItem>)" required></select>
+                    <span asp-validation-for="TypeReservation" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-4">
+                    <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
